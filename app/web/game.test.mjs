@@ -184,3 +184,43 @@ test('chosen rooms start at a clear entrance and respawn there',()=>{
   g.startRoom=0;g.reset();assert.deepEqual(g.player,{x:84,y:65});
   g.startRoom=999;g.reset();assert.equal(g.room,0);assert.deepEqual(g.player,{x:84,y:65});
 });
+
+test('all snakes follow horizontally, bend their bodies, and keep their tails anchored',()=>{
+  for(const room of [17,19,34]) {
+    const g=fresh();g.enter(room,20,20);g.infiniteShield=true;
+    const {head,parts}=g.snake;
+    assert.equal(parts.length,5);assert.equal(g.enemies.some(e=>e.kind===162),false);
+    const ys=parts.map(e=>e.y),tailX=parts.at(-1).x,start=head.x;
+    for(let i=0;i<100;i++)g.update();
+    assert.ok(head.x<start);assert.equal(head.x,head.restX-24);
+    assert.ok(head.tilt<0 && Math.abs(head.tilt)<0.18);
+    assert.deepEqual(parts.map(e=>e.y),ys);assert.equal(parts.at(-1).x,tailX);
+    for(let i=1;i<parts.length;i++)assert.ok(Math.abs(parts[i].x-parts[i-1].x)<24);
+    g.player={x:head.restX+24,y:20};
+    for(let i=0;i<150;i++)g.update();
+    assert.equal(head.x,g.player.x);assert.ok(parts[1].x>parts[1].restX);
+    assert.ok(head.tilt>0 && head.tilt<0.18);
+    const before=JSON.stringify([parts,g.enemyShots,g.snake.cooldown]);
+    g.pause();for(let i=0;i<100;i++)g.update();
+    assert.equal(JSON.stringify([parts,g.enemyShots,g.snake.cooldown]),before);
+    g.pause();g.enter(0,84,65);assert.equal(g.snake,null);assert.equal(g.enemyShots.length,0);
+  }
+});
+test('snake shots aim at the player, cause damage, and stop when the head dies',()=>{
+  const g=fresh();g.enter(17,170,20);g.infiniteShield=true;
+  for(let i=0;i<44;i++)g.update();assert.equal(g.enemyShots.length,0);
+  g.update();assert.equal(g.enemyShots.length,1);
+  const shot=g.enemyShots[0],head=g.snake.head;
+  const origin={x:shot.x-shot.vx,y:shot.y-shot.vy};
+  assert.equal(origin.x,head.x+12);assert.equal(origin.y,head.y+10);
+  const dx=g.player.x+12-origin.x,dy=g.player.y+10-origin.y;
+  assert.ok(Math.abs(shot.vx*dy-shot.vy*dx)<1e-8);
+  assert.ok(Math.abs(Math.hypot(shot.vx,shot.vy)-2.3)<1e-8);
+  g.infiniteShield=false;g.invulnerable=0;
+  g.enemyShots=[{x:g.player.x+12-2,y:g.player.y+10,vx:2,vy:0,life:20}];
+  const lives=g.lives;g.update();assert.equal(g.lives,lives-1);
+  g.infiniteShield=true;head.hp=1;g.snake.cooldown=80;
+  g.bullets=[{x:head.x+12-8,y:head.y+10,vx:8,vy:0,life:5}];
+  g.update();assert.equal(head.hp,0);
+  g.enemyShots=[];for(let i=0;i<200;i++)g.update();assert.equal(g.enemyShots.length,0);
+});

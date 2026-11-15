@@ -10,7 +10,7 @@
   "status": "ready",
   "note": "Ready: 4 of 5 checks pass, 4 of 4 claims hold; 1 comparison remains unverified. 1 question about the original is still open.",
   "created_ms": 1794735508907,
-  "updated_ms": 1794770627505,
+  "updated_ms": 1794770987862,
   "checks": [
     {
       "round": 1,
@@ -851,14 +851,154 @@
       "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
       "artifacts": [],
       "at_ms": 1794770620036
+    },
+    {
+      "round": 13,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794770860802
+    },
+    {
+      "round": 13,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794770865100
+    },
+    {
+      "round": 13,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794770868862,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 13,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794770868887,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 13,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794770868889
+    },
+    {
+      "round": 14,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794770975640
+    },
+    {
+      "round": 14,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794770979416
+    },
+    {
+      "round": 14,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794770982961,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 14,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794770982970,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 14,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794770982971
     }
   ],
-  "agent_session": "01a1e0a8-c35a-78f2-b93b-93ccf6425644",
+  "agent_session": "01a1e0af-08c6-7143-9854-8103a82d60be",
   "agent_session_by": "codex",
   "agent_session_deep": true,
   "capture_deep": true,
   "allowed_actions": [],
-  "last_reply": "I’ll check how room selection sets the player’s position, update it to use the entrance, then rebuild and run rebuild_check.\n\nSelected rooms currently use a captured player position, which can place the ship in the middle of the room. I’ll use the doorway reached from the starting room and place the ship just inside it, clear of walls and locked doors.\n\nChoosing a room now starts the player just inside its entrance, clear of walls and locked doors. Rebuilt successfully and all 22 tests pass; rebuild_check passed its available checks, with exact mechanics comparison still unverified.",
+  "last_reply": "I’ll reduce the sideways movement and add a subtle head tilt that follows the movement, then rebuild and check it.\nReduced the snake’s sideways movement and added a subtle head tilt toward its lean. Rebuilt successfully; all 24 tests and rebuild_check passed, though exact original-game behavior remains unverified.",
   "asset_budget_usd": 5.0,
   "generate_assets": false,
   "decompiled": true

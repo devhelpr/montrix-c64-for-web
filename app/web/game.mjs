@@ -30,6 +30,16 @@ export class Game {
       hp: Math.max(1, a.health || 1), phase: 0,
     })).filter(a => a.poses?.some(([p]) => p[3] && p[1] > -21 && p[1] < 160) && !this.cleared.has(a.id));
     for (const e of this.enemies) { this.placeActor(e); if(e.kind===172) {e.rocket=true;e.launched=false;e.x=e.launchX??e.x;e.y=e.launchY??e.y;e.launchX=e.x;e.launchY=e.y;e.sprite=23;e.hp=8;e.visible=true;} }
+    // Snake projectile captures are idle recordings; replace them with shots
+    // launched by the live head, leaving other rooms' actors alone.
+    this.snake = null;
+    const head=this.enemies.find(e=>e.kind===156);
+    if(head) {
+      this.enemies=this.enemies.filter(e=>e.kind!==162);
+      const parts=[156,157,165,166,167].map(kind=>this.enemies.find(e=>e.kind===kind)).filter(Boolean);
+      for(const e of parts) {e.snakePart=true;e.restX=e.x;e.restY=e.y;}
+      this.snake={head,parts,offset:0,cooldown:45};
+    }
     this.invulnerable = Math.max(this.invulnerable, 35);
   }
   startAtEntrance() {
@@ -69,7 +79,7 @@ export class Game {
     }
   }
   placeActor(e) {
-    if(e.rocket) return;
+    if(e.rocket || e.snakePart) return;
     // Give both doors a slightly gentler pace, sharing the same clock for
     // their leaves and attached pistons.
     const age=this.room===10 && e.kind>=197 && e.kind<=202
@@ -93,6 +103,27 @@ export class Game {
         e.sprite=matching[2]; e.scaleX=matching[4]; e.scaleY=matching[5];
       }
     }
+  }
+  updateSnake() {
+    const snake=this.snake;
+    if(!snake || snake.head.hp<=0) return;
+    const {head,parts}=snake;
+    // Keep the bend restrained and the foot attached to the floor.
+    const target=Math.max(-24,Math.min(24,this.player.x-head.restX));
+    snake.offset+=Math.max(-0.45,Math.min(0.45,target-snake.offset));
+    // A small clockwise tilt leans right; negative angles lean left.
+    head.tilt=snake.offset/24*0.16;
+    for(const e of parts) {
+      const weight=Math.max(0,1-(e.restY-head.restY)/84);
+      e.x=e.restX+snake.offset*weight; e.y=e.restY;
+    }
+    if(--snake.cooldown>0 || head.visible===false) return;
+    snake.cooldown=85;
+    const x=head.x+12,y=head.y+10;
+    const dx=this.player.x+12-x,dy=this.player.y+10-y;
+    const distance=Math.hypot(dx,dy);
+    if(distance<1) return;
+    this.enemyShots.push({x,y,vx:dx/distance*2.3,vy:dy/distance*2.3,life:160,sprite:35});
   }
   removedObjects() { return this.interactions.filter(o => o.type==='door' ? this.keys.has(o.key) : this.collected.has(`${this.room}:${o.type==='key'?o.key:o.type}`)); }
   solid(x, y) { if (x < 0 || x >= 320 || y < 0 || y >= 160) return false; if(this.removedObjects().some(o=>x>=o.x&&x<o.x+o.w&&y>=o.y&&y<o.y+o.h))return false; return this.data.rooms[this.room].collision[Math.floor(y / 8) * 40 + Math.floor(x / 8)] === 128 || this.interactions.some(o=>o.type==='door'&&!this.keys.has(o.key)&&x>=o.x&&x<o.x+o.w&&y>=o.y&&y<o.y+o.h); }
@@ -146,6 +177,7 @@ export class Game {
     }
     if(input.fire) this.fire();
     this.roomTick++;
+    this.updateSnake();
     for(const e of this.enemies) {
       this.placeActor(e);
       if(e.rocket) {
