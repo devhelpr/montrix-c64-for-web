@@ -19,8 +19,8 @@ export function actorPose(actor, age) {
   return actor.poses.at(-1)[0];
 }
 export class Game {
-  constructor(data, sound = () => {}) { this.data = data; this.sound = sound; this.mode = 'title'; this.tick = 0; this.best = 0; this.infiniteLives = false; this.infiniteShield = false; this.reset(); this.mode = 'title'; }
-  reset() { this.tick = 0; this.turnFrame = 0; this.drift = 0; this.coast = 0; this.score = 0; this.lives = 4; this.cooldown = 0; this.invulnerable = 64; this.direction = 0; this.shotsFired = 0; this.kills = 0; this.keys = new Set(); this.collected = new Set(); this.visited = new Set(); this.cleared = new Set(); this.particles = []; this.mode = 'playing'; this.enter(0, 84, 65); }
+  constructor(data, sound = () => {}) { this.data = data; this.sound = sound; this.mode = 'title'; this.tick = 0; this.best = 0; this.startRoom = 0; this.infiniteLives = false; this.infiniteShield = false; this.reset(); this.mode = 'title'; }
+  reset() { this.tick = 0; this.turnFrame = 0; this.drift = 0; this.coast = 0; this.score = 0; this.lives = 4; this.cooldown = 0; this.invulnerable = 64; this.direction = 0; this.shotsFired = 0; this.kills = 0; this.keys = new Set(); this.collected = new Set(); this.visited = new Set(); this.cleared = new Set(); this.particles = []; this.mode = 'playing'; const room = Number.isInteger(this.startRoom) && this.startRoom >= 0 && this.startRoom < this.data.rooms.length ? this.startRoom : 0; const pose = this.data.rooms[room].actors[0]?.poses?.[0]?.[0]; this.enter(room, room === 0 ? 84 : (pose?.[0] ?? 84), room === 0 ? 65 : (pose?.[1] ?? 65)); }
   enter(id, x, y) {
     this.room = id; this.visited.add(id); this.player = {x, y}; this.spawn = {x, y}; this.bullets = []; this.enemyShots = [];
     this.roomTick = 0; this.particles = [];

@@ -10,7 +10,7 @@
   "status": "ready",
   "note": "Ready: 4 of 5 checks pass, 4 of 4 claims hold; 1 comparison remains unverified. 1 question about the original is still open.",
   "created_ms": 1794735508907,
-  "updated_ms": 1794749950420,
+  "updated_ms": 1794769266857,
   "checks": [
     {
       "round": 1,
@@ -641,14 +641,84 @@
       "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
       "artifacts": [],
       "at_ms": 1794749950408
+    },
+    {
+      "round": 10,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794769259880
+    },
+    {
+      "round": 10,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-10/screenshot.png"
+      ],
+      "at_ms": 1794769263346
+    },
+    {
+      "round": 10,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-10/self-test.json"
+      ],
+      "at_ms": 1794769266829,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 10,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794769266840,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 10,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794769266841
     }
   ],
-  "agent_session": "01a1df6a-1529-7882-a196-327a32cc6e18",
+  "agent_session": "01a1e093-f299-7353-a959-02aa70633333",
   "agent_session_by": "codex",
   "agent_session_deep": true,
   "capture_deep": true,
   "allowed_actions": [],
-  "last_reply": "I’ll check the key, door, and rocket interactions, add the title-screen options, then rebuild and run rebuild_check.\nThe web game currently treats every animated object as an enemy and has no key inventory. I’m checking the original room data to identify the keys, their matching doors, and the rockets’ launch behavior.\nI found the original key-to-door IDs and recovered all 19 pairs, including keys that open more than one door. I’m adding persistent pickups and door unlocking, making rockets launch when the ship flies above them, and adding separate Infinite lives and Infinite shield switches on the title screen.\nAll 20 automated tests pass, covering every key’s matching doors, rocket launches and hits, and both cheat options. The rebuild passed too; rebuild_check passed its reference-app checks, but it does not verify the web version’s visual gameplay.\nFixed key pickups so all 19 keys open their matching doors, and rockets launch when you fly over them. Added separate Infinite lives and Infinite shield switches to the title screen. Rebuilt successfully with all 20 tests passing; rebuild_check passed its reference-app checks, while web visual gameplay remains unverified.",
+  "last_reply": "I’ll add a start-room picker to the title screen with search, room details, and a preview image, then rebuild and check the app.\nThe title screen now has a start-room dropdown and a searchable modal with numbered room previews. The build and existing tests pass; I’m checking the picker’s behavior and running `rebuild_check` next.\nAdded a title-screen dropdown to choose or reset the start room, plus a searchable modal with room numbers and preview images. Rebuilt successfully and all 20 tests pass; rebuild_check passed its build and gameplay checks, while original mechanics comparisons remain unverified.",
   "asset_budget_usd": 5.0,
   "generate_assets": false,
   "decompiled": true
