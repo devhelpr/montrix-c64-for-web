@@ -1,0 +1,3 @@
+# Findings
+
+- **fnd_1** Decoded the owner-provided VICE C64MEM RAM and manually inspected 6502 routines: four-direction joystick port 2 controls, fire bit 16, one-pixel movement increments, 60-room table, initial four reserve lives, projectile pools and six decimal score digits. A new Rust CPU/display/input runtime retains the original RAM instructions and original art instead of estimating per-enemy rules. (Worked it out; evidence: ev_4867cb49a211cb36fe2af22c0125a91e0e18064eeba72607fc023876bb1599a0, ev_5baf157582ad9df9f6da74c3eebcc30f10ef3854552843ddec9098153d2d7777, ev_704663daa59f8fabcfb11a0b7284f65c346143eb1f2b7efc9e559c558ac80d2d, ev_6e1579bc9cc018700bdf219daf95c49f946987aba409c4207844336b708da571)

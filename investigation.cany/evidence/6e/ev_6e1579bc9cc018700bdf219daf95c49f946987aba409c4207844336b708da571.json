@@ -1,0 +1,42 @@
+{
+  "id": "ev_6e1579bc9cc018700bdf219daf95c49f946987aba409c4207844336b708da571",
+  "subject": {
+    "kind": "raw-binary",
+    "sha256": "19697bb462b13703b96bed6ec3824d68ade38d5d9d22e687dcfbebb27cf19231",
+    "name": "ram.bin"
+  },
+  "operation": "native_bytes_show",
+  "params": {
+    "address": "0x1974",
+    "length": 12
+  },
+  "result": {
+    "address": "0x1974",
+    "ascii": "............",
+    "file_offset": 6516,
+    "hex": "050504040302050102050101",
+    "length": 12
+  },
+  "summary": "12 bytes at 0x1974.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "macos-aarch64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 12,
+    "total": 12
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x1974"
+    }
+  ],
+  "links": []
+}

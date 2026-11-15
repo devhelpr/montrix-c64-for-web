@@ -1,0 +1,11 @@
+[package]
+name = "montrix"
+version = "0.1.0"
+edition = "2021"
+default-run = "montrix"
+[dependencies]
+macroquad = "0.4"
+serde_json = "1"
+
+[patch.crates-io]
+miniquad = { path = "vendor/miniquad" }

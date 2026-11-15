@@ -1,0 +1,39 @@
+{
+  "id": "ev_ce8ba968d2260d6f49b3cc4bd864588cdeba6b5287bf901de0fda488d45cc673",
+  "subject": {
+    "kind": "folder",
+    "name": "capture"
+  },
+  "operation": "game_archives_list",
+  "params": {
+    "path": "/Users/audax/Documents/Craft Anything/montrix-vice-snapshot-20261115103455/capture"
+  },
+  "result": {
+    "archives": [],
+    "engine": "none",
+    "folder": "/Users/audax/Documents/Craft Anything/montrix-vice-snapshot-20261115103455/capture",
+    "truncated": false
+  },
+  "summary": "capture: no Unreal, Unity or Godot archives found.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "macos-aarch64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 0,
+    "total": 0
+  },
+  "locations": [
+    {
+      "kind": "path",
+      "value": "/Users/audax/Documents/Craft Anything/montrix-vice-snapshot-20261115103455/capture"
+    }
+  ],
+  "links": []
+}

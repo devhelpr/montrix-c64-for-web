@@ -1,0 +1,42 @@
+{
+  "id": "ev_4867cb49a211cb36fe2af22c0125a91e0e18064eeba72607fc023876bb1599a0",
+  "subject": {
+    "kind": "raw-binary",
+    "sha256": "19697bb462b13703b96bed6ec3824d68ade38d5d9d22e687dcfbebb27cf19231",
+    "name": "ram.bin"
+  },
+  "operation": "native_bytes_show",
+  "params": {
+    "address": "0x1308",
+    "length": 768
+  },
+  "result": {
+    "address": "0x1308",
+    "ascii": " .\")... .. ....)..9.P..........R..L.xL...f......l..3....j.....i. .w.k....e.`..)..9........./.....L2xL...e......l.......j.....i. .w.k....e.`..).....L}uLBxL.v.N.(.).......?..........(....(....k....`...h......l....k..k.......i.....j....e.`..)..2..L.u..LXx..%.(.)..................(.)..(....k....`.g......l....e....k..k..?....i.....j.`.(.)......|....v.Lq....|....v....8..JJJ.i.....8.,JJJ.L..L.%...m.`...0.@.xL u .. M.........)...........0....1............... . ...m.`.....`...n....)...n............0.r..1.v....z... | ..L]!`.....`........)........m.......0....1...............L.#`.....`.........L.......`.. ~........ `........ .......`.r....v....z....~...L.#...*...u....`...n............................`...n.....(..LZ......i....B......i....C.......K...``.....F.........`..",
+    "file_offset": 4872,
+    "hex": "2005222910d003208b1420f0b5a5022902d039a050b10bf004c980f008c8c052d0f34c00784c9313ad661bc9fff0f68d6c1ba9338d101a8d6a1bad081a8d691b2000778d6b1ba9fe8d651b60a5022901d039a000b10bf004c980f02fc8c002d0f34c32784c9313ad651bc9fff01d8d6c1ba9bc8d101a8d6a1bad081a8d691b2000778d6b1ba9fe8d651b60a5022908d008a9024c7d754c42784cac76f04ead281a2901f007ad081ac93ff01aad081ac9ffd00dad281a09018d281aa9018d6b1bee081a60f413ad681bc9fff01f8d6c1ba9008d6b1b8d6b1ba91a8d081a8d691bad101a8d6a1ba9fe8d651b60a5022904d032a9014c9075a0004c587880f025ad281a2901d007ad081ac919f018ad081ac900d00dad281a29fe8d281aa9008d6b1bce081a60ad671bc9fff0f88d6c1ba9fe8d651ba9018d6b1b8d6b1ba93f8d081a8d691bad101a8d6a1b60ad281a2901d00da9008d7c14a9118d76144c7114a91e8d7c14a9008d7614ad081a38e9114a4a4a186900aaad101a38e92c4a4a4aa84c1b184c0025f004ce6d1b60a000b130c940b0784c207520dd14204d15a200bd8a1bc900d029a9019d8a1ba5089d9e1ba5309d8e1ba5319d921ba5049d961ba5059d9a1ba50320a120a90a8d6d1b60e8e004d0cb60a200bd6e1bc900d029a9019d6e1ba5039d861ba5089d821ba5309d721ba5319d761ba5049d7a1ba505207c20a90a4c5d2160e8e004d0cb60a200bda61bc900d029a9019da61ba90a8d6d1ba5089dbe1ba5309daa1ba5319dae1ba5049db21ba5059db61ba5034c852360e8e002d0cb60a202bda61bc900d0f14c1e15e8e004d0f160a200207e15e8e004d0f8a200206016e8e004d0f8a200201917e8e004d0f860bd721b85a6bd761b85a7bd7a1b85a4bd7e1b85a54cb223c901f02ac902f075c903f00160a9009d6e1ba000a90091a4c891a4c891a4c891a4c891a4c891a4c891a4c891a460a9029d6e1bbd821bc928d0034c5a16a000a5a718698085a7ad421b91a6a5a718691885a7ad431b91a6bce01bad4b1b91a46060c911f00cad461ba00091a4a00791a460bce0",
+    "length": 768
+  },
+  "summary": "768 bytes at 0x1308.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "macos-aarch64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 768,
+    "total": 768
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x1308"
+    }
+  ],
+  "links": []
+}

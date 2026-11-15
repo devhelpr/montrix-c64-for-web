@@ -1,0 +1,51 @@
+{
+  "id": "ev_a3f1242ded2deb28f369096d35356583b6fc65340c38a772e12e4c0f542a5352",
+  "subject": {
+    "kind": "unknown",
+    "sha256": "ef7324fa262261b5406e1204c2d0db3b0a0a3e0439584eaaad7a30e6c17804db",
+    "name": "montrix-vice-snapshot-20261115103455.vsf"
+  },
+  "operation": "core_target_triage",
+  "params": {
+    "path": null
+  },
+  "result": {
+    "description": "A file we don't recognise yet",
+    "kind": "unknown",
+    "next_steps": [
+      {
+        "tool": "native_bytes_show",
+        "why": "look at the raw bytes"
+      },
+      {
+        "tool": "core_target_open",
+        "why": "reopen with format=raw-binary if it is machine code"
+      }
+    ],
+    "plain_english": "montrix-vice-snapshot-20261115103455.vsf isn't a format we recognise yet.",
+    "recommended_toolsets": [
+      "core"
+    ],
+    "size": 193261
+  },
+  "summary": "montrix-vice-snapshot-20261115103455.vsf isn't a format we recognise yet.",
+  "confidence": "inferred",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "macos-aarch64"
+  },
+  "limitations": [
+    {
+      "code": "detected_by_content",
+      "message": "the kind is detected from the first bytes and, to break ties, the file name"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [],
+  "links": []
+}

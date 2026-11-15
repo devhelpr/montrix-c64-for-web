@@ -1,0 +1,655 @@
+{
+  "version": 5,
+  "name": "montrix-vice-snapshot-20261115103455",
+  "request": "attached is a vice commodore 64 memory snapshot of my game montrix on the commodore64 from 1991. please recreate it using the memory map",
+  "target": {
+    "kind": "local",
+    "path": "/Users/audax/Development/AI/montrix-vice-snapshot-20261115103455.vsf"
+  },
+  "stack": "Rust + macroquad",
+  "status": "ready",
+  "note": "Ready: 4 of 5 checks pass, 4 of 4 claims hold; 1 comparison remains unverified. 1 question about the original is still open.",
+  "created_ms": 1794735508907,
+  "updated_ms": 1794749950420,
+  "checks": [
+    {
+      "round": 1,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794736697148
+    },
+    {
+      "round": 1,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-1/screenshot.png"
+      ],
+      "at_ms": 1794736701253
+    },
+    {
+      "round": 1,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-1/self-test.json"
+      ],
+      "at_ms": 1794736704735,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794736704741,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 1,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794736704744
+    },
+    {
+      "round": 2,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794744984437
+    },
+    {
+      "round": 2,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794744988201
+    },
+    {
+      "round": 2,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794744991673,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794744991681,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 2,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794744991682
+    },
+    {
+      "round": 3,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794745911221
+    },
+    {
+      "round": 3,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794745914741
+    },
+    {
+      "round": 3,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794745918267,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794745918274,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 3,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794745918274
+    },
+    {
+      "round": 4,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794747246088
+    },
+    {
+      "round": 4,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794747250083
+    },
+    {
+      "round": 4,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794747253564,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794747253574,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 4,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794747253575
+    },
+    {
+      "round": 5,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794747906048
+    },
+    {
+      "round": 5,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794747910052
+    },
+    {
+      "round": 5,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794747913671,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794747913682,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 5,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794747913683
+    },
+    {
+      "round": 6,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794748100887
+    },
+    {
+      "round": 6,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (1152×816).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794748103427
+    },
+    {
+      "round": 6,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794748107075,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 6,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794748107090,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 6,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794748107091
+    },
+    {
+      "round": 7,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794748531597
+    },
+    {
+      "round": 7,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794748535634
+    },
+    {
+      "round": 7,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794748539103,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 7,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794748539111,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 7,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794748539112
+    },
+    {
+      "round": 8,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794749099138
+    },
+    {
+      "round": 8,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-0/screenshot.png"
+      ],
+      "at_ms": 1794749102953
+    },
+    {
+      "round": 8,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-0/self-test.json"
+      ],
+      "at_ms": 1794749106434,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 8,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794749106442,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 8,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794749106442
+    },
+    {
+      "round": 9,
+      "check": "build",
+      "passed": true,
+      "similarity": null,
+      "note": "Build succeeded.",
+      "artifacts": [],
+      "at_ms": 1794749943568
+    },
+    {
+      "round": 9,
+      "check": "app-screenshot",
+      "passed": true,
+      "similarity": null,
+      "note": "The program starts and draws (2304×1632).",
+      "artifacts": [
+        "checks/round-9/screenshot.png"
+      ],
+      "at_ms": 1794749946936
+    },
+    {
+      "round": 9,
+      "check": "game-self-test",
+      "passed": true,
+      "similarity": null,
+      "note": "The self-test plays the core loop: move (Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames), act (Held joystick fire for 100 PAL frames; 9 new projectile states emitted), hud (Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives).",
+      "artifacts": [
+        "checks/round-9/self-test.json"
+      ],
+      "at_ms": 1794749950398,
+      "claims": [
+        {
+          "title": "In play, the player moves",
+          "passed": true
+        },
+        {
+          "title": "In play, the player's main action works",
+          "passed": true
+        },
+        {
+          "title": "In play, the on-screen information is drawn",
+          "passed": true
+        },
+        {
+          "title": "Self-test step \"machine\"",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "round": 9,
+      "check": "mechanics",
+      "passed": true,
+      "similarity": null,
+      "note": "app/mechanics.json has 54 values (52 with a source, 3 estimated). The sheet is readable; its behavior is unverified. No runtime measurement was compared with these values. A source literal or a core-loop self-test alone cannot establish that the build uses them.",
+      "artifacts": [],
+      "at_ms": 1794749950407,
+      "unknowns": [
+        "Mechanics behavior has not been measured against app/mechanics.json."
+      ]
+    },
+    {
+      "round": 9,
+      "check": "credits",
+      "passed": true,
+      "similarity": null,
+      "note": "app/README.md says the build is for private use and app/CREDITS.md lists the original's files.",
+      "artifacts": [],
+      "at_ms": 1794749950408
+    }
+  ],
+  "agent_session": "01a1df6a-1529-7882-a196-327a32cc6e18",
+  "agent_session_by": "codex",
+  "agent_session_deep": true,
+  "capture_deep": true,
+  "allowed_actions": [],
+  "last_reply": "I’ll check the key, door, and rocket interactions, add the title-screen options, then rebuild and run rebuild_check.\nThe web game currently treats every animated object as an enemy and has no key inventory. I’m checking the original room data to identify the keys, their matching doors, and the rockets’ launch behavior.\nI found the original key-to-door IDs and recovered all 19 pairs, including keys that open more than one door. I’m adding persistent pickups and door unlocking, making rockets launch when the ship flies above them, and adding separate Infinite lives and Infinite shield switches on the title screen.\nAll 20 automated tests pass, covering every key’s matching doors, rocket launches and hits, and both cheat options. The rebuild passed too; rebuild_check passed its reference-app checks, but it does not verify the web version’s visual gameplay.\nFixed key pickups so all 19 keys open their matching doors, and rockets launch when you fly over them. Added separate Infinite lives and Infinite shield switches to the title screen. Rebuilt successfully with all 20 tests passing; rebuild_check passed its reference-app checks, while web visual gameplay remains unverified.",
+  "asset_budget_usd": 5.0,
+  "generate_assets": false,
+  "decompiled": true
+}

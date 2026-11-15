@@ -1,0 +1,20 @@
+{
+  "id": "unk_c3be8a6b98faa0d9",
+  "revision": 2,
+  "question": "What are Montrix's rules, controls, timing and saved screen? The snapshot container is unsupported by the analysis tools; decode its C64 memory and inspect BASIC/machine code before estimating.",
+  "severity": "critical",
+  "domain": "gameplay",
+  "status": "resolved",
+  "probes": [
+    "Parse VICE modules and recover RAM, VIC-II registers and character ROM",
+    "Decode BASIC program and disassemble routines referenced by SYS"
+  ],
+  "evidence_for": [
+    "ev_4867cb49a211cb36fe2af22c0125a91e0e18064eeba72607fc023876bb1599a0",
+    "ev_5baf157582ad9df9f6da74c3eebcc30f10ef3854552843ddec9098153d2d7777",
+    "ev_704663daa59f8fabcfb11a0b7284f65c346143eb1f2b7efc9e559c558ac80d2d",
+    "ev_6e1579bc9cc018700bdf219daf95c49f946987aba409c4207844336b708da571"
+  ],
+  "evidence_against": [],
+  "resolution": "Recovered 64 KiB RAM at C64MEM payload+4, VIC registers and color RAM, decoded 6502 movement/fire, room, score and life routines; recorded sources in app/MECHANICS.md and mechanics.json. Graphics recovered through independently implemented raster renderer. Original game RAM retained so unexpanded AI/item rules are executed directly, not estimated. Hardware/verification limits remain separately tracked."
+}

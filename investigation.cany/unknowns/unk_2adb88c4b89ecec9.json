@@ -1,0 +1,14 @@
+{
+  "id": "unk_2adb88c4b89ecec9",
+  "revision": 2,
+  "question": "Exact runtime fidelity cannot yet be compared: no reference images or original runtime capture, unsupported VICE/6502 in analysis tool and missing Ghidra native decompiler. Manual 6502 decoding is being used. Can the original state be reconstructed with raster, input and sound timing?",
+  "severity": "medium",
+  "domain": "verification",
+  "status": "open",
+  "probes": [
+    "Provide an original VICE gameplay capture and matching input sequence to compare speed, sound, raster/border effects and later rooms"
+  ],
+  "evidence_for": [],
+  "evidence_against": [],
+  "resolution": "Implemented and tested a tailored 6502/VIC-II/input runtime; 500-frame self-test passes movement, actual projectile creation, HUD and opcode coverage. No original runtime or reference images exist for a 1:1 comparison. SID analog sound, precise bus contention and border effects are approximated and labeled in app/MECHANICS.md and README.md; full campaign remains unverified. No game modes or tables intentionally removed."
+}

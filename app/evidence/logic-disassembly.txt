@@ -1,0 +1,932 @@
+0b00  INY 
+0b01  JMP $0b1d
+0b04  LDA ($fb),Y
+0b06  LDA ($fb),Y
+0b08  STA $1a51,X
+0b0b  INY 
+0b0c  LDA ($fb),Y
+0b0e  STA $1a08,X
+0b11  STA $1a68,X
+0b14  INY 
+0b15  LDA ($fb),Y
+0b17  STA $1a10,X
+0b1a  JSR $2029
+0b1d  INY 
+0b1e  INX 
+0b1f  CPX #$08
+0b21  BNE $0aef
+0b23  LDX #$00
+0b25  JSR $2ea8
+0b28  CMP #$80
+0b2a  BCS $0b2f
+0b2c  JMP $0bfc
+0b2f  AND #$1f
+0b31  ASL 
+0b32  ASL 
+0b33  ASL 
+0b34  STA $fd
+0b36  JSR $2076
+0b39  LSR 
+0b3a  LSR 
+0b3b  LSR 
+0b3c  LSR 
+0b3d  LSR 
+0b3e  CLC 
+0b3f  ADC #$1e
+0b41  STA $fe
+0b43  LDA $19fa,X
+0b46  STA $fb
+0b48  LDA $1a01,X
+0b4b  STA $fc
+0b4d  LDY #$00
+0b4f  LDA ($fd),Y
+0b51  STA $4835,X
+0b54  JMP $0b76
+0b57  LDA ($fd),Y
+0b59  CMP #$ff
+0b5b  BNE $0b66
+0b5d  LDY #$00
+0b5f  LDA #$2c
+0b61  STA ($fb),Y
+0b63  JMP $0b76
+0b66  LDY #$01
+0b68  STA ($fb),Y
+0b6a  LDA ($fd),Y
+0b6c  LDY #$02
+0b6e  STA ($fb),Y
+0b70  LDY #$00
+0b72  LDA #$20
+0b74  STA ($fb),Y
+0b76  LDY #$02
+0b78  LDA ($fd),Y
+0b7a  CMP #$ff
+0b7c  BNE $0b90
+0b7e  LDY #$03
+0b80  LDA ($fd),Y
+0b82  STA $1a21,X
+0b85  LDA #$ff
+0b87  STA $f2
+0b89  STA $f3
+0b8b  JMP $0bb2
+0b8e  STA $f3
+0b90  LDY #$02
+0b92  LDA ($fd),Y
+0b94  STA $f2
+0b96  INY 
+0b97  LDA ($fd),Y
+0b99  STA $f3
+0b9b  LDA $1a11,X
+0b9e  BEQ $0b85
+0ba0  JMP $0bb2
+0ba3  LDY #$05
+0ba5  LDA ($fb),Y
+0ba7  ADC #$00
+0ba9  STA ($fb),Y
+0bab  LDY #$00
+0bad  LDA ($f0),Y
+0baf  STA $1a21,X
+0bb2  LDY #$04
+0bb4  LDA ($fd),Y
+0bb6  JSR $23ea
+0bb9  LDY #$05
+0bbb  LDA ($fd),Y
+0bbd  JSR $4824
+0bc0  LDY #$06
+0bc2  LDA ($fd),Y
+0bc4  LSR 
+0bc5  LSR 
+0bc6  LSR 
+0bc7  LSR 
+0bc8  LSR 
+0bc9  LSR 
+0bca  LSR 
+0bcb  CMP #$01
+0bcd  BEQ $0bd7
+0bcf  LDA #$00
+0bd1  STA $1a5a,X
+0bd4  JMP $0bdc
+0bd7  LDA #$01
+0bd9  STA $1a5a,X
+0bdc  LDY #$06
+0bde  LDA ($fd),Y
+0be0  AND #$40
+0be2  STA $1d97,X
+0be5  LDY #$07
+0be7  LDA ($fd),Y
+0be9  AND #$7f
+0beb  STA $1a3a,X
+0bee  LDA ($fd),Y
+0bf0  AND #$80
+0bf2  STA $02
+0bf4  LDA $1d97,X
+0bf7  ORA $02
+0bf9  JSR $6b2e
+0bfc  INX 
+0bfd  CPX #$07
+0bff  BEQ $0c04
+0c01  JMP $0b25
+0c04  LDA #$3b
+0c06  JSR $27b0
+0c09  JSR $0c0f
+0c0c  JMP $0c8a
+0c0f  LDA #$fa
+0c11  STA $ec
+0c13  LDA #$e8
+0c15  STA $eb
+0c17  LDA $1b64
+0c1a  CMP #$09
+0c1c  BCS $0c21
+0c1e  JMP $0cce
+0c21  LDA #$09
+0c23  JMP $0cd1
+0c26  LDA #$fb
+0c28  STA $ec
+0c2a  LDA #$48
+0c2c  STA $eb
+0c2e  LDA $7a8f
+0c31  CMP #$09
+0c33  BCS $0c3b
+0c35  LDA $7a8f
+0c38  JMP $0cd1
+0c3b  LDA #$09
+0c3d  JMP $0cd1
+0c40  JSR $0c26
+0c43  LDA $10f3
+0c46  RTS 
+0c47  BNE $0c54
+0c49  LDA #$02
+0c4b  STA $1b64
+0c4e  JSR $0cce
+0c51  JMP $0c85
+0c54  LDA $02
+0c56  CMP #$01
+0c58  BNE $0c6d
+0c5a  LDA #$02
+0c5c  STA $1b64
+0c5f  JSR $0cce
+0c62  LDA #$01
+0c64  STA $1b64
+0c67  JSR $0cce
+0c6a  JMP $0c85
+0c6d  LDA #$02
+0c6f  STA $1b64
+0c72  JSR $0cce
+0c75  LDA #$01
+0c77  STA $1b64
+0c7a  JSR $0cce
+0c7d  LDA #$00
+0c7f  STA $1b64
+0c82  JSR $0cce
+0c85  LDA $02
+0c87  STA $1b64
+0c8a  CLI 
+0c8b  JSR $0c40
+0c8e  CMP #$01
+0c90  BEQ $0c95
+0c92  JSR $18cb
+0c95  LDA $1b65
+0c98  CMP #$fe
+0c9a  BNE $0c8b
+0c9c  JSR $2a7b
+0c9f  CLC 
+0ca0  ADC #$05
+0ca2  STA $eb
+0ca4  LDA $0ad9
+0ca7  ADC #$00
+0ca9  STA $ec
+0cab  LDY #$00
+0cad  LDX #$00
+0caf  LDA $1a52,X
+0cb2  STA ($eb),Y
+0cb4  INY 
+0cb5  INY 
+0cb6  INY 
+0cb7  INX 
+0cb8  CPX #$07
+0cba  BNE $0caf
+0cbc  LDA #$00
+0cbe  STA $07ef
+0cc1  JMP $29da
+0cc4  CMP #$01
+0cc6  BEQ $0ccb
+0cc8  JMP $0825
+0ccb  JMP $7ab4
+0cce  LDA $1b64
+0cd1  STX $ed
+0cd3  ASL 
+0cd4  ASL 
+0cd5  ASL 
+0cd6  TAX 
+0cd7  LDY #$01
+0cd9  LDA $2ad1,X
+0cdc  STA ($eb),Y
+0cde  INY 
+0cdf  INX 
+0ce0  CPY #$08
+0ce2  BNE $0cd9
+0ce4  LDX $ed
+0ce6  RTS 
+0ce7  STA $fae8
+0cea  STA $fae8
+0ced  STA $fae8
+0cf0  STA $fae8
+0cf3  STA $fae8
+0cf6  RTS 
+0cf7  LDX #$01
+0cf9  JSR $0d1a
+0cfc  LDX #$02
+0cfe  JSR $0d1a
+0d01  LDX #$03
+0d03  JSR $0d1a
+0d06  LDX #$04
+0d08  JSR $0d1a
+0d0b  LDX #$05
+0d0d  JSR $0d1a
+0d10  LDX #$06
+0d12  JSR $0d1a
+0d15  LDX #$07
+0d17  JMP $0d1a
+0d1a  JMP $7600
+0d1d  CMP #$00
+0d1f  BNE $0d22
+0d21  RTS 
+0d22  LDA $1a29,X
+0d25  BNE $0d21
+0d27  JSR $187a
+0d2a  LDA $1b82
+0d2d  SEC 
+0d2e  SBC $20
+0d30  CMP #$01
+0d32  BEQ $0d44
+0d34  LDY $1a59,X
+0d37  BNE $0d69
+0d39  CMP #$00
+0d3b  BEQ $0d44
+0d3d  CMP #$02
+0d3f  BEQ $0d44
+0d41  JMP $0d69
+0d44  LDA $1b86
+0d47  SEC 
+0d48  SBC $21
+0d4a  CMP #$01
+0d4c  BEQ $0d5a
+0d4e  CMP #$02
+0d50  BEQ $0d5a
+0d52  CMP #$00
+0d54  BEQ $0d5a
+0d56  NOP 
+0d57  JMP $0d69
+0d5a  LDA $1b6e
+0d5d  BEQ $0d69
+0d5f  LDA #$01
+0d61  JSR $7aa0
+0d64  LDA #$03
+0d66  STA $1b6e
+0d69  LDA $1b83
+0d6c  SEC 
+0d6d  SBC $20
+0d6f  CMP #$01
+0d71  BEQ $0d83
+0d73  LDY $1a59,X
+0d76  BNE $0da8
+0d78  CMP #$00
+0d7a  BEQ $0d83
+0d7c  CMP #$02
+0d7e  BEQ $0d83
+0d80  JMP $0da8
+0d83  LDA $1b87
+0d86  SEC 
+0d87  SBC $21
+0d89  CMP #$01
+0d8b  BEQ $0d99
+0d8d  CMP #$02
+0d8f  BEQ $0d99
+0d91  CMP #$00
+0d93  BEQ $0d99
+0d95  NOP 
+0d96  JMP $0da8
+0d99  LDA $1b6f
+0d9c  BEQ $0da8
+0d9e  LDA #$01
+0da0  JSR $7aa0
+0da3  LDA #$03
+0da5  STA $1b6f
+0da8  LDA $1b84
+0dab  SEC 
+0dac  SBC $20
+0dae  CMP #$01
+0db0  BEQ $0dc2
+0db2  LDY $1a59,X
+0db5  BNE $0de7
+0db7  CMP #$00
+0db9  BEQ $0dc2
+0dbb  CMP #$02
+0dbd  BEQ $0dc2
+0dbf  JMP $0de7
+0dc2  LDA $1b88
+0dc5  SEC 
+0dc6  SBC $21
+0dc8  CMP #$01
+0dca  BEQ $0dd8
+0dcc  CMP #$02
+0dce  BEQ $0dd8
+0dd0  CMP #$00
+0dd2  BEQ $0dd8
+0dd4  NOP 
+0dd5  JMP $0de7
+0dd8  LDA $1b70
+0ddb  BEQ $0de7
+0ddd  LDA #$01
+0ddf  JSR $7aa0
+0de2  LDA #$03
+0de4  STA $1b70
+0de7  LDA $1b85
+0dea  SEC 
+0deb  SBC $20
+0ded  CMP #$01
+0def  BEQ $0e01
+0df1  LDY $1a59,X
+0df4  BNE $0e26
+0df6  CMP #$00
+0df8  BEQ $0e01
+0dfa  CMP #$02
+0dfc  BEQ $0e01
+0dfe  JMP $0e26
+0e01  LDA $1b89
+0e04  SEC 
+0e05  SBC $21
+0e07  CMP #$01
+0e09  BEQ $0e17
+0e0b  CMP #$02
+0e0d  BEQ $0e17
+0e0f  CMP #$00
+0e11  BEQ $0e17
+0e13  NOP 
+0e14  JMP $0e26
+0e17  LDA $1b71
+0e1a  BEQ $0e26
+0e1c  LDA #$01
+0e1e  JSR $7aa0
+0e21  LDA #$03
+0e23  STA $1b71
+0e26  LDA $1b9e
+0e29  SEC 
+0e2a  SBC $20
+0e2c  CMP #$01
+0e2e  BEQ $0e40
+0e30  LDY $1a59,X
+0e33  BNE $0e65
+0e35  CMP #$00
+0e37  BEQ $0e40
+0e39  CMP #$02
+0e3b  BEQ $0e40
+0e3d  JMP $0e65
+0e40  LDA $1ba2
+0e43  SEC 
+0e44  SBC $21
+0e46  CMP #$01
+0e48  BEQ $0e56
+0e4a  CMP #$02
+0e4c  BEQ $0e56
+0e4e  CMP #$00
+0e50  BEQ $0e56
+0e52  NOP 
+0e53  JMP $0e65
+0e56  LDA $1b8a
+0e59  BEQ $0e65
+0e5b  LDA #$01
+0e5d  JSR $7aa0
+0e60  LDA #$03
+0e62  STA $1b8a
+0e65  LDA $1b9f
+0e68  SEC 
+0e69  SBC $20
+0e6b  CMP #$01
+0e6d  BEQ $0e7f
+0e6f  LDY $1a59,X
+0e72  BNE $0ea4
+0e74  CMP #$00
+0e76  BEQ $0e7f
+0e78  CMP #$02
+0e7a  BEQ $0e7f
+0e7c  JMP $0ea4
+0e7f  LDA $1ba3
+0e82  SEC 
+0e83  SBC $21
+0e85  CMP #$01
+0e87  BEQ $0e95
+0e89  CMP #$02
+0e8b  BEQ $0e95
+0e8d  CMP #$00
+0e8f  BEQ $0e95
+0e91  NOP 
+0e92  JMP $0ea4
+0e95  LDA $1b8b
+0e98  BEQ $0ea4
+0e9a  LDA #$01
+0e9c  JSR $7aa0
+0e9f  LDA #$03
+0ea1  STA $1b8b
+0ea4  LDA $1ba0
+0ea7  SEC 
+0ea8  SBC $20
+0eaa  CMP #$01
+0eac  BEQ $0ebe
+0eae  LDY $1a59,X
+0eb1  BNE $0ee3
+0eb3  CMP #$00
+0eb5  BEQ $0ebe
+0eb7  CMP #$02
+0eb9  BEQ $0ebe
+0ebb  JMP $0ee3
+0ebe  LDA $1ba4
+0ec1  SEC 
+0ec2  SBC $21
+0ec4  CMP #$01
+0ec6  BEQ $0ed4
+0ec8  CMP #$02
+0eca  BEQ $0ed4
+0ecc  CMP #$00
+0ece  BEQ $0ed4
+0ed0  NOP 
+0ed1  JMP $0ee3
+0ed4  LDA $1b8c
+0ed7  BEQ $0ee3
+0ed9  LDA #$01
+0edb  JSR $7aa0
+0ede  LDA #$03
+0ee0  STA $1b8c
+0ee3  LDA $1ba1
+0ee6  SEC 
+0ee7  SBC $20
+0ee9  CMP #$01
+0eeb  BEQ $0efd
+0eed  LDY $1a59,X
+0ef0  BNE $0f22
+0ef2  CMP #$00
+0ef4  BEQ $0efd
+0ef6  CMP #$02
+0ef8  BEQ $0efd
+0efa  JMP $0f22
+0efd  LDA $1ba5
+0f00  SEC 
+0f01  SBC $21
+0f03  CMP #$01
+0f05  BEQ $0f13
+0f07  CMP #$02
+0f09  BEQ $0f13
+0f0b  CMP #$00
+0f0d  BEQ $0f13
+0f0f  NOP 
+0f10  JMP $0f22
+0f13  LDA $1b8d
+0f16  BEQ $0f22
+0f18  LDA #$01
+0f1a  JSR $7aa0
+0f1d  LDA #$03
+0f1f  STA $1b8d
+0f22  LDA $1bbe
+0f25  SEC 
+0f26  SBC $20
+0f28  CMP #$01
+0f2a  BEQ $0f3c
+0f2c  LDY $1a59,X
+0f2f  BNE $0f61
+0f31  CMP #$00
+0f33  BEQ $0f3c
+0f35  CMP #$02
+0f37  BEQ $0f3c
+0f39  JMP $0f61
+0f3c  LDA $1bba
+0f3f  SEC 
+0f40  SBC $21
+0f42  CMP #$01
+0f44  BEQ $0f52
+0f46  CMP #$02
+0f48  BEQ $0f52
+0f4a  CMP #$00
+0f4c  BEQ $0f52
+0f4e  NOP 
+0f4f  JMP $0f61
+0f52  LDA $1ba6
+0f55  BEQ $0f61
+0f57  LDA #$01
+0f59  JSR $7aa0
+0f5c  LDA #$03
+0f5e  STA $1ba6
+0f61  LDA $1bbf
+0f64  SEC 
+0f65  SBC $20
+0f67  CMP #$01
+0f69  BEQ $0f7b
+0f6b  LDY $1a59,X
+0f6e  BNE $0fa0
+0f70  CMP #$00
+0f72  BEQ $0f7b
+0f74  CMP #$02
+0f76  BEQ $0f7b
+0f78  JMP $0fa0
+0f7b  LDA $1bbb
+0f7e  SEC 
+0f7f  SBC $21
+0f81  CMP #$01
+0f83  BEQ $0f91
+0f85  CMP #$02
+0f87  BEQ $0f91
+0f89  CMP #$00
+0f8b  BEQ $0f91
+0f8d  NOP 
+0f8e  JMP $0fa0
+0f91  LDA $1ba7
+0f94  BEQ $0fa0
+0f96  LDA #$01
+0f98  JSR $7aa0
+0f9b  LDA #$03
+0f9d  STA $1ba7
+0fa0  LDA $1bc0
+0fa3  SEC 
+0fa4  SBC $20
+0fa6  CMP #$01
+0fa8  BEQ $0fba
+0faa  LDY $1a59,X
+0fad  BNE $0fdf
+0faf  CMP #$00
+0fb1  BEQ $0fba
+0fb3  CMP #$02
+0fb5  BEQ $0fba
+0fb7  JMP $0fdf
+0fba  LDA $1bbc
+0fbd  SEC 
+0fbe  SBC $21
+0fc0  CMP #$01
+0fc2  BEQ $0fd0
+0fc4  CMP #$02
+0fc6  BEQ $0fd0
+0fc8  CMP #$00
+0fca  BEQ $0fd0
+0fcc  NOP 
+0fcd  JMP $0fdf
+0fd0  LDA $1ba8
+0fd3  BEQ $0fdf
+0fd5  LDA #$01
+0fd7  JSR $7aa0
+0fda  LDA #$03
+0fdc  STA $1ba8
+0fdf  LDA $1bc1
+0fe2  SEC 
+0fe3  SBC $20
+0fe5  CMP #$01
+0fe7  BEQ $0ff9
+0fe9  LDY $1a59,X
+0fec  BNE $101e
+0fee  CMP #$00
+0ff0  BEQ $0ff9
+0ff2  CMP #$02
+0ff4  BEQ $0ff9
+0ff6  JMP $101e
+0ff9  LDA $1bbd
+0ffc  SEC 
+0ffd  SBC $21
+0fff  CMP #$01
+1001  BEQ $100f
+1003  CMP #$02
+1005  BEQ $100f
+1007  CMP #$00
+1009  BEQ $100f
+100b  NOP 
+100c  JMP $101e
+100f  LDA $1ba9
+1012  BEQ $101e
+1014  LDA #$01
+1016  JSR $7aa0
+1019  LDA #$03
+101b  STA $1ba9
+101e  LDA $20
+1020  STA $22
+1022  LDA $21
+1024  STA $23
+1026  STX $1f
+1028  LDA $1a29,X
+102b  CMP #$02
+102d  BEQ $106c
+102f  LDA $1a20,X
+1032  CMP #$10
+1034  BEQ $106c
+1036  LDX #$00
+1038  JSR $187a
+103b  LDA $20
+103d  SEC 
+103e  SBC $22
+1040  CMP #$00
+1042  BEQ $1057
+1044  CMP #$01
+1046  BEQ $1057
+1048  CMP #$01
+104a  BEQ $1057
+104c  CMP #$ff
+104e  BEQ $1057
+1050  CMP #$01
+1052  BEQ $1057
+1054  JMP $106c
+1057  LDA $21
+1059  SEC 
+105a  SBC $23
+105c  CMP #$00
+105e  BEQ $106d
+1060  CMP #$ff
+1062  BEQ $106d
+1064  CMP #$ff
+1066  BEQ $106d
+1068  CMP #$00
+106a  BEQ $106d
+106c  RTS 
+106d  LDX #$00
+106f  JSR $7aa0
+1072  LDX $1f
+1074  JSR $7aa0
+1077  RTS 
+1078  LDX #$00
+107a  JMP $6b51
+107d  BNE $1095
+107f  INX 
+1080  CPX #$08
+1082  BNE $107a
+1084  RTS 
+1085  JMP $1132
+1088  LDA $1167
+108b  BEQ $10f4
+108d  LDA #$00
+108f  STA $1a29
+1092  JMP $107f
+1095  CMP #$01
+1097  BNE $1085
+1099  CPX #$00
+109b  BEQ $1088
+109d  LDA #$20
+109f  BIT $eaea
+10a2  LDA $1a10,X
+10a5  CMP #$00
+10a7  BNE $10b6
+10a9  LDA #$10
+10ab  BIT $12e6
+10ae  LDA #$00
+10b0  STA $1a29,X
+10b3  JMP $107f
+10b6  LDA #$01
+10b8  JMP $786e
+10bb  LDA $1a49,X
+10be  TAY 
+10bf  LDA $1974,Y
+10c2  STA $50
+10c4  LDA $197a,Y
+10c7  STA $51
+10c9  LDY $50
+10cb  LDA $196e,Y
+10ce  CLC 
+10cf  ADC $51
+10d1  STA $196e,Y
+10d4  CMP #$0a
+10d6  BEQ $10dd
+10d8  BCS $10dd
+10da  RTS 
+10db  .byte $f4
+10dc  BPL $1097
+10de  ROR $3819
+10e1  SBC #$0a
+10e3  STA $196e,Y
+10e6  CPY #$00
+10e8  BEQ $10da
+10ea  DEC $50
+10ec  LDA #$01
+10ee  STA $51
+10f0  JMP $10c9
+10f3  BRK 
+10f4  LDA #$00
+10f6  STA $10f3
+10f9  JMP $6ac6
+10fc  CMP #$00
+10fe  BEQ $111b
+1100  JMP $27c0
+1103  LDA #$10
+1105  STA $1a29,X
+1108  LDA $1a18,X
+110b  STA $1a41,X
+110e  LDA #$01
+1110  STA $1a18,X
+1113  LDA #$10
+1115  BIT $12e6
+1118  JMP $107f
+111b  LDA #$00
+111d  STA $1a31,X
+1120  LDA #$02
+1122  JSR $7aab
+1125  CPX #$00
+1127  BNE $112f
+1129  LDA $1a20
+112c  JMP $752d
+112f  JMP $7540
+1132  CMP #$02
+1134  BNE $11b4
+1136  JMP $78ae
+1139  LDA $21e0,Y
+113c  STA $1a20,X
+113f  INC $1a31,X
+1142  LDA $1a31,X
+1145  CMP #$0e
+1147  BNE $1164
+1149  LDA #$00
+114b  STA $1a29,X
+114e  JSR $6ad6
+1151  CPX #$00
+1153  BEQ $1176
+1155  STA $1a10,X
+1158  LDA $1d96,X
+115b  AND #$80
+115d  BNE $1164
+115f  LDA #$ff
+1161  JSR $2038
+1164  JMP $107f
+1167  RTI 
+1168  .byte $0c
+1169  LDA #$01
+116b  STA $07f0
+116e  LDA #$fe
+1170  STA $1b65
+1173  JMP $107f
+1176  LDA #$11
+1178  JSR $7890
+117b  LDA #$80
+117d  STA $1167
+1180  LDA $1b64
+1183  BEQ $1169
+1185  LDA $1b64
+1188  JSR $0c0f
+118b  JMP $107f
+118e  LDA $1a18
+1191  STA $1168
+1194  LDA $1b69
+1197  STA $1a08
+119a  LDA $1b6a
+119d  STA $1a10
+11a0  LDA $1a28
+11a3  AND #$fe
+11a5  ORA $1b6b
+11a8  STA $1a28
+11ab  LDA $1b6b
+11ae  STA $1b6b
+11b1  JMP $107f
+11b4  CMP #$10
+11b6  BNE $1164
+11b8  LDA #$00
+11ba  STA $1a29,X
+11bd  LDA $1a41,X
+11c0  STA $1a18,X
+11c3  JMP $107f
+11c6  LDA $1167
+11c9  BNE $11cc
+11cb  RTS 
+11cc  DEC $1167
+11cf  BNE $11d8
+11d1  LDA $1168
+11d4  STA $1a18
+11d7  RTS 
+11d8  DEC $1a18
+11db  RTS 
+11dc  STA $1274
+11df  STY $1276
+11e2  STX $1278
+11e5  LDA #$01
+11e7  JMP $7a08
+11ea  LDX #$00
+11ec  LDY #$00
+11ee  LDA $1a08,Y
+11f1  STA $d000,X
+11f4  LDA $1a10,Y
+11f7  STA $d001,X
+11fa  LDA $1a18,Y
+11fd  STA $d027,Y
+1200  LDA $1a20,Y
+1203  STA $c3f8,Y
+1206  INX 
+1207  INX 
+1208  INY 
+1209  CPY #$08
+120b  BNE $11ee
+120d  LDA $1a28
+1210  JMP $2012
+1213  BIT $eaea
+1216  JSR $6a82
+1219  BIT $70a0
+121c  JSR $4840
+121f  JSR $11c6
+1222  LDA $1a29
+1225  BNE $122a
+1227  JSR $12e7
+122a  JSR $b6a2
+122d  NOP 
+122e  NOP 
+122f  NOP 
+1230  NOP 
+1231  NOP 
+1232  NOP 
+1233  NOP 
+1234  NOP 
+1235  NOP 
+1236  NOP 
+1237  NOP 
+1238  NOP 
+1239  NOP 
+123a  NOP 
+123b  NOP 
+123c  NOP 
+123d  NOP 
+123e  NOP 
+123f  NOP 
+1240  NOP 
+1241  NOP 
+1242  LDA $d01f
+1245  STA $9ffe
+1248  NOP 
+1249  NOP 
+124a  NOP 
+124b  JSR $7ba1
+124e  LDA $1b65
+1251  CMP #$fe
+1253  BEQ $1258
+1255  JSR $5c06
+1258  NOP 
+1259  NOP 
+125a  LDA #$7a
+125c  STA $fffe
+125f  LDA #$12
+1261  STA $ffff
+1264  LDA #$d0
+1266  STA $d012
+1269  LDA #$3b
+126b  STA $d011
+126e  LDA #$01
+1270  STA $d019
+1273  LDA #$01
+1275  LDY #$0d
+1277  LDX #$28
+1279  RTI 
+127a  STA $12a8
+127d  STY $12aa
+1280  STX $12ac
+1283  LDA #$00
+1285  BIT $d020
+1288  JSR $2bc0
+128b  JSR $1fae
+128e  LDA #$dc
+1290  STA $fffe
+1293  LDA #$11
+1295  STA $ffff
+1298  LDA #$10
+129a  STA $d012
+129d  LDA #$3b
+129f  STA $d011
+12a2  LDA #$01
+12a4  STA $d019
+12a7  LDA #$00
+12a9  LDY #$08
+12ab  LDX #$03
+12ad  RTI 
+12ae  LDA #$7f
+12b0  STA $dc00
+12b3  LDA $dc01
+12b6  AND #$10
+12b8  BNE $12df
+12ba  LDA $12e5
+12bd  BNE $12de
+12bf  JMP $7a90
+12c2  LDA #$00
+12c4  STA $12e6
+12c7  LDX #$00
+12c9  LDA #$01
+12cb  JMP $278a
+12ce  BNE $12d6
+12d0  STA $1a2a,X
+12d3  LSR $1a3a,X
+12d6  LSR $1a3a,X
+12d9  INX 
+12da  CPX #$07
+12dc  BNE $12c9
+12de  RTS 
+12df  LDA #$00
+12e1  STA $12e5
+12e4  RTS 
+12e5  BRK 
+12e6  .byte $02
+12e7  JSR $1453
+12ea  LDA $07
+12ec  STA $0a
+12ee  LDA $06
+12f0  SEC 
+12f1  SBC #$01
+12f3  STA $09
+12f5  BCS $12f9
+12f7  DEC $0a
+12f9  LDA $07
+12fb  STA $0c
+12fd  LDA $06
+12ff  SEC 

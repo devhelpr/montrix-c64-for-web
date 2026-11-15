@@ -1,0 +1,384 @@
+{
+  "version": 1,
+  "values": [
+    {
+      "name": "PAL CPU clock",
+      "group": "timing",
+      "value": 985248,
+      "unit": "cycles/s",
+      "source": "VICE C64 PAL model; snapshot VIC-II model byte 1"
+    },
+    {
+      "name": "cycles per raster line",
+      "group": "timing",
+      "value": 63,
+      "unit": "cycles",
+      "source": "VICE PAL C64 model"
+    },
+    {
+      "name": "raster lines per frame",
+      "group": "timing",
+      "value": 312,
+      "unit": "lines",
+      "source": "VICE PAL C64 model"
+    },
+    {
+      "name": "simulation frame rate",
+      "group": "timing",
+      "value": 50.125,
+      "unit": "Hz",
+      "source": "985248 / (312 * 63), rounded 0.001 Hz"
+    },
+    {
+      "name": "screen width",
+      "group": "display",
+      "value": 320,
+      "unit": "pixels",
+      "source": "VIC-II 40 columns \u00d7 8, register $D016"
+    },
+    {
+      "name": "screen height",
+      "group": "display",
+      "value": 200,
+      "unit": "pixels",
+      "source": "VIC-II 25 rows \u00d7 8, register $D011"
+    },
+    {
+      "name": "output with border",
+      "group": "display",
+      "value": "384 \u00d7 272",
+      "unit": "pixels",
+      "source": "renderer crop around VIC-II visible area",
+      "estimated": true
+    },
+    {
+      "name": "map tile size",
+      "group": "collision",
+      "value": 8,
+      "unit": "pixels",
+      "source": "6502 $1453\u2013$1488 and $2205: divide X/Y by 8"
+    },
+    {
+      "name": "solid collision marker",
+      "group": "collision",
+      "value": 128,
+      "unit": "byte",
+      "source": "6502 $7842\u2013$786B compares tile to $80"
+    },
+    {
+      "name": "horizontal movement increment",
+      "group": "movement",
+      "value": 1,
+      "unit": "pixel/update",
+      "source": "6502 $13C8 INC $1A08 and $1429 DEC $1A08; update frequency driven by original interrupts"
+    },
+    {
+      "name": "vertical movement increment",
+      "group": "movement",
+      "value": 1,
+      "unit": "pixel/update",
+      "source": "6502 $7807 INC $1A10 and $7839 DEC $1A10"
+    },
+    {
+      "name": "flight direction",
+      "group": "movement",
+      "value": "four directions, held joystick; horizontal coasting/braking counter 16",
+      "unit": "rule",
+      "source": "6502 $1308\u2013$1452 and $7800\u2013$786B"
+    },
+    {
+      "name": "right room edge",
+      "group": "movement",
+      "value": 319,
+      "unit": "C64 sprite X",
+      "source": "6502 $13AD compares X low $3F with high bit set"
+    },
+    {
+      "name": "left room edge",
+      "group": "movement",
+      "value": 25,
+      "unit": "C64 sprite X",
+      "source": "6502 $140E compares X $19"
+    },
+    {
+      "name": "top room edge",
+      "group": "movement",
+      "value": 50,
+      "unit": "C64 sprite Y",
+      "source": "6502 $7832 compares Y $32"
+    },
+    {
+      "name": "bottom room edge",
+      "group": "movement",
+      "value": 191,
+      "unit": "C64 sprite Y",
+      "source": "6502 $7800 compares Y $BF"
+    },
+    {
+      "name": "room transition marker",
+      "group": "rooms",
+      "value": 254,
+      "unit": "byte",
+      "source": "6502 $13EE and $1437 set $1B65=$FE"
+    },
+    {
+      "name": "room count",
+      "group": "rooms",
+      "value": 60,
+      "unit": "rooms",
+      "source": "6502 $20CF\u2013$20E1 CMP #$3C; 60 four-byte entries at $2800"
+    },
+    {
+      "name": "room entry size",
+      "group": "rooms",
+      "value": 4,
+      "unit": "bytes",
+      "source": "6502 $20B9 ASL ASL indexes table at $2800"
+    },
+    {
+      "name": "room absent link",
+      "group": "rooms",
+      "value": 255,
+      "unit": "byte",
+      "source": "6502 $1330, $136F, $13CE, $142D check $FF"
+    },
+    {
+      "name": "joystick port",
+      "group": "controls",
+      "value": 2,
+      "unit": "port",
+      "source": "6502 $2257 LDA $DC00; CIA1 joystick port 2"
+    },
+    {
+      "name": "joystick up bit",
+      "group": "controls",
+      "value": 1,
+      "unit": "active-low mask",
+      "source": "6502 $1308\u2013$1452; input $02 / $DC00"
+    },
+    {
+      "name": "joystick down bit",
+      "group": "controls",
+      "value": 2,
+      "unit": "active-low mask",
+      "source": "6502 $1308\u2013$1452; input $02 / $DC00"
+    },
+    {
+      "name": "joystick left bit",
+      "group": "controls",
+      "value": 4,
+      "unit": "active-low mask",
+      "source": "6502 $1308\u2013$1452; input $02 / $DC00"
+    },
+    {
+      "name": "joystick right bit",
+      "group": "controls",
+      "value": 8,
+      "unit": "active-low mask",
+      "source": "6502 $1308\u2013$1452; input $02 / $DC00"
+    },
+    {
+      "name": "joystick fire bit",
+      "group": "controls",
+      "value": 16,
+      "unit": "active-low mask",
+      "source": "6502 $1308\u2013$1452; input $02 / $DC00"
+    },
+    {
+      "name": "desktop movement",
+      "group": "controls",
+      "value": "arrow keys or WASD",
+      "unit": "binding",
+      "source": "new input bridge to original joystick port 2"
+    },
+    {
+      "name": "desktop fire/start",
+      "group": "controls",
+      "value": "Space or Enter, hold",
+      "unit": "binding",
+      "source": "new input bridge to original joystick fire bit 16"
+    },
+    {
+      "name": "pause",
+      "group": "controls",
+      "value": "P or Escape",
+      "unit": "binding",
+      "source": "new desktop convenience"
+    },
+    {
+      "name": "restart",
+      "group": "controls",
+      "value": "R",
+      "unit": "binding",
+      "source": "new desktop convenience: restore snapshot then press fire"
+    },
+    {
+      "name": "mute",
+      "group": "controls",
+      "value": "M",
+      "unit": "binding",
+      "source": "new desktop convenience"
+    },
+    {
+      "name": "reserve lives at start",
+      "group": "survival",
+      "value": 4,
+      "unit": "reserve lives",
+      "source": "6502 $0820 LDY #$04; $214F STY $1B64; measured after fire-to-start"
+    },
+    {
+      "name": "respawn flash counter",
+      "group": "survival",
+      "value": 64,
+      "unit": "updates",
+      "source": "6502 $2154 LDA #$40 stores $1167"
+    },
+    {
+      "name": "respawn protection counter after death",
+      "group": "survival",
+      "value": 128,
+      "unit": "updates",
+      "source": "6502 $117B stores $80 to $1167"
+    },
+    {
+      "name": "enemy slots",
+      "group": "enemies",
+      "value": 7,
+      "unit": "slots",
+      "source": "6502 $0AEB\u2013$0B21 slots 1..7; player in slot 0"
+    },
+    {
+      "name": "sprite actor slots",
+      "group": "enemies",
+      "value": 8,
+      "unit": "slots",
+      "source": "6502 $11EA\u2013$120B and $27CB"
+    },
+    {
+      "name": "initial enemy health storage",
+      "group": "enemies",
+      "value": 8,
+      "unit": "per slot, later template-dependent",
+      "source": "snapshot $1A39\u2013$1A40; $27C0 decrements health until zero"
+    },
+    {
+      "name": "death animation length",
+      "group": "enemies",
+      "value": 14,
+      "unit": "animation steps",
+      "source": "6502 $1145 CMP #$0E"
+    },
+    {
+      "name": "death animation hold",
+      "group": "enemies",
+      "value": 3,
+      "unit": "updates/step",
+      "source": "6502 $78AE\u2013$78C1 reloads counter 2, decrements twice"
+    },
+    {
+      "name": "enemy behavior",
+      "group": "enemies",
+      "value": "original per-room template programs and movement tables",
+      "unit": "rule",
+      "source": "6502 $0B25\u2013$0BFC loads 8-byte templates at $1E00; AI $60xx\u2013$72xx retained in original RAM"
+    },
+    {
+      "name": "projectile cooldown reload",
+      "group": "weapons",
+      "value": 10,
+      "unit": "updates",
+      "source": "6502 $14D1, $1509, $1523 set $1B6D=$0A"
+    },
+    {
+      "name": "horizontal projectile slots per direction",
+      "group": "weapons",
+      "value": 4,
+      "unit": "slots",
+      "source": "6502 $14A5\u2013$1512 checks four slots right / left"
+    },
+    {
+      "name": "vertical projectile slots",
+      "group": "weapons",
+      "value": 4,
+      "unit": "slots",
+      "source": "6502 $1515\u2013$155E split indices 0..1 / 2..3"
+    },
+    {
+      "name": "projectile travel step",
+      "group": "weapons",
+      "value": 1,
+      "unit": "tile/update",
+      "source": "6502 $1620 INC projectile X; $16D4 DEC X; $17A5 and $17F1 vertical Y"
+    },
+    {
+      "name": "weapon mode selector",
+      "group": "weapons",
+      "value": "original $217F selector and per-mode branching",
+      "unit": "rule",
+      "source": "6502 $2180\u2013$219B and $2500\u2013$2559 retained; no extra magazine/reload mechanics added"
+    },
+    {
+      "name": "score digits",
+      "group": "scoring",
+      "value": 6,
+      "unit": "decimal digits",
+      "source": "6502 $10BB\u2013$10F0, $196E\u2013$1973, $9EC4\u2013$9ED5"
+    },
+    {
+      "name": "enemy score rewards",
+      "group": "scoring",
+      "value": "5, 1, 20, 50, 100, 1000",
+      "unit": "points by original reward index",
+      "source": "6502 $1974 digit indices 5,5,4,4,3,2 and $197A increments 5,1,2,5,1,1; actual formula 10^(5-digit index)*increment"
+    },
+    {
+      "name": "score reset",
+      "group": "scoring",
+      "value": 0,
+      "unit": "points",
+      "source": "6502 $7AC0\u2013$7AD1 clears six decimal digits"
+    },
+    {
+      "name": "music voices",
+      "group": "sound",
+      "value": 3,
+      "unit": "voices",
+      "source": "original writes to SID $D400\u2013$D418"
+    },
+    {
+      "name": "SID oscillator frequency",
+      "group": "sound",
+      "value": "16-bit register \u00d7 985248 / 16777216",
+      "unit": "Hz",
+      "source": "MOS SID frequency register formula; original music/SFX writes preserved"
+    },
+    {
+      "name": "sound sample rate",
+      "group": "sound",
+      "value": 44100,
+      "unit": "samples/s",
+      "source": "new macOS output backend"
+    },
+    {
+      "name": "SID analog response",
+      "group": "sound",
+      "value": "approximate pulse/saw/triangle/noise and attack/release; no analog filter model",
+      "unit": "implementation",
+      "estimated": true
+    },
+    {
+      "name": "VIC-II bus contention",
+      "group": "timing",
+      "value": "not modeled; original instruction cycles and raster IRQs are modeled",
+      "unit": "implementation",
+      "estimated": true
+    },
+    {
+      "name": "screenshot duration",
+      "group": "verification",
+      "value": 120,
+      "unit": "rendered frames",
+      "source": "new screenshot runner"
+    }
+  ]
+}

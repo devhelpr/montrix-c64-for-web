@@ -1,0 +1,42 @@
+{
+  "revision": 7,
+  "brief": null,
+  "plan": [
+    {
+      "title": "Read the saved machine and recover the screen",
+      "status": "done",
+      "why": "Recovered exact RAM, graphics, fonts, color memory and saved registers"
+    },
+    {
+      "title": "Trace the rules and controls",
+      "status": "done",
+      "why": "Decoded 6502 constants and documented 54 mechanics values; unsupported decompiler limitation recorded"
+    },
+    {
+      "title": "Build the playable recreation",
+      "status": "done",
+      "why": "Rust + macroquad game runtime with original game data, controls, sound, pause/restart and private-use credits"
+    },
+    {
+      "title": "Test play and compare the picture",
+      "status": "done",
+      "why": "Build, screenshot and all self-test steps pass. Original-reference mechanics/audio comparison remains explicitly unverified; checker says another builder turn cannot resolve it."
+    }
+  ],
+  "hypotheses": [],
+  "findings": [
+    {
+      "id": "fnd_1",
+      "statement": "Decoded the owner-provided VICE C64MEM RAM and manually inspected 6502 routines: four-direction joystick port 2 controls, fire bit 16, one-pixel movement increments, 60-room table, initial four reserve lives, projectile pools and six decimal score digits. A new Rust CPU/display/input runtime retains the original RAM instructions and original art instead of estimating per-enemy rules.",
+      "evidence_ids": [
+        "ev_4867cb49a211cb36fe2af22c0125a91e0e18064eeba72607fc023876bb1599a0",
+        "ev_5baf157582ad9df9f6da74c3eebcc30f10ef3854552843ddec9098153d2d7777",
+        "ev_704663daa59f8fabcfb11a0b7284f65c346143eb1f2b7efc9e559c558ac80d2d",
+        "ev_6e1579bc9cc018700bdf219daf95c49f946987aba409c4207844336b708da571"
+      ],
+      "confidence": "derived"
+    }
+  ],
+  "handoff": "Fixed user's room order/connection complaint in app/. Root cause established with temporary Rust diagnostic: reference_export captured room8 -> actual9 and15 -> actual17 by frame823 (actor interactions moved idle ship through exits); raw room links already matched original RAM, so backgrounds/collision/actors were mislabeled. Removed diagnostic file. Build-time reference_export now patches only its capture machine's four exit handlers $1330/$136F/$13CE/$142D to RTS, asserts active room for every sample and background, emits capturedRoom identity. Regenerated all60 PNGs, collision/actor data and sprite atlas, preserving prior room10 attachments/door settings. README documents fix. Added tests checking all60 identities/directional links directly against original snapshot, distinct formerly duplicated rooms8/9 and15/17, and physically crossing every linked edge with native collision. npm run build and npm test pass all16 including offline bundle smoke. rebuild_check invoked and passed build/screenshot/selftest/credits; mechanics comparison remains incomplete. Checker still selects preserved Rust runtime, not web bundle. Original simulator unchanged; full original mechanics/visual equivalence remains unverified. Standalone web outputs app/index.html and app/dist/index.html rebuilt. No user confirmation needed; task done.",
+  "updated": "2026-11-15T13:25:22Z"
+}

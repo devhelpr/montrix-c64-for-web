@@ -1,0 +1,42 @@
+{
+  "id": "ev_5baf157582ad9df9f6da74c3eebcc30f10ef3854552843ddec9098153d2d7777",
+  "subject": {
+    "kind": "raw-binary",
+    "sha256": "19697bb462b13703b96bed6ec3824d68ade38d5d9d22e687dcfbebb27cf19231",
+    "name": "ram.bin"
+  },
+  "operation": "native_bytes_show",
+  "params": {
+    "address": "0x20b9",
+    "length": 260
+  },
+  "result": {
+    "address": "0x20b9",
+    "ascii": ".l.....`......)......` G  L .l..l..<....L.z`..)..Q.`. .......... .`..........@...O..L.-pA...qA......@.............k.H..I..p..q....H..I..p..q.`...8.&.`...h..@.g..d.`.m..r..i..r....v..z..i..z....~.L.!...!.. .. .. M.L... .....L..L...........`....!...`. .........)",
+    "file_offset": 8377,
+    "hex": "ad6c1b180a0aa8608d00dda00099291ac8c008d0f860204720204c20ee6c1bad6c1bc93cd0f3a9004cf07a60b1fb297f9d511a60ad201ac912f0f8c911f0f48c201a60000000008d11d0a016a94085fba94f85fc4c802d7041a9848d7141a200bd00149d40eabd10149d80ebe8e010d0efa96b8d48c18d49c18d70c18d71c1a9028d48d98d49d98d70d98d71d960ad101a38e9261860a90c8d6811a9408d67118c641b608d6d1bbd721b1869039d721b9003fe761bbd7a1b1869189d7a1b9003fe7e1b4c9e2100ad7f21f00c20151520dd14204d154ca514ad201ac911f0034ca5144cdd14fe821bfe821bfe821b60a9008d7f218df007608d20d0b1fbc9fff0f6b1fb29",
+    "length": 260
+  },
+  "summary": "260 bytes at 0x20b9.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "macos-aarch64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 260,
+    "total": 260
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x20b9"
+    }
+  ],
+  "links": []
+}

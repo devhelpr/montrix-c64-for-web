@@ -1,0 +1,25 @@
+{
+  "steps": [
+    {
+      "detail": "Pressed fire to start; flight from (108, 116) to (214, 172); changed position during 175 frames",
+      "passed": true,
+      "step": "move"
+    },
+    {
+      "detail": "Held joystick fire for 100 PAL frames; 9 new projectile states emitted",
+      "passed": true,
+      "step": "act"
+    },
+    {
+      "detail": "Rendered original score and lives HUD (15914 colored bytes); six decimal score digits; 4 initial reserve lives",
+      "passed": true,
+      "step": "hud"
+    },
+    {
+      "detail": "500 frames, 0 unsupported instructions",
+      "passed": true,
+      "step": "machine"
+    }
+  ],
+  "version": 1
+}

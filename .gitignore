@@ -1,0 +1,26 @@
+# macOS metadata
+.DS_Store
+._*
+
+# Rust build output
+target/
+
+# Node dependencies and generated web bundles
+node_modules/
+/app/dist/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local environment configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs
+*.log

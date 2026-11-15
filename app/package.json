@@ -1,0 +1,13 @@
+{
+  "name": "montrix-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node web/build.mjs",
+    "start": "node web/serve.mjs",
+    "dev": "node web/serve.mjs",
+    "test": "node --test web/game.test.mjs web/bundle.test.mjs",
+    "test:browser": "node web/browser-check.mjs"
+  }
+}
