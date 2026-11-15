@@ -145,3 +145,42 @@ test('infinite lives and shield are independent and survive restarts',()=>{
   g.infiniteLives=false;g.infiniteShield=true;g.invulnerable=0;g.player={x:120,y:20};g.hurt();assert.deepEqual(g.player,{x:120,y:20});assert.equal(g.mode,'playing');assert.equal(g.lives,0);
   g.reset();assert.equal(g.infiniteShield,true);assert.equal(g.infiniteLives,false);g.infiniteShield=false;g.invulnerable=0;g.hurt();assert.equal(g.lives,3);
 });
+
+test('displayed Room 17 star collects on contact and grants a persistent four-direction volley',()=>{
+  const g=fresh();g.enter(16,28,56);g.enemies=[];
+  const star=g.interactions.find(o=>o.type==='fourWay');assert.ok(star);
+  assert.deepEqual([star.x,star.y,star.w,star.h],[40,56,16,16]);
+  g.fire();assert.deepEqual(g.bullets.map(b=>[b.vx,b.vy]),[[8,0]]);
+  g.bullets=[];g.cooldown=0;
+  g.pause();g.update({right:true});assert.equal(g.fourWay,false);g.pause();
+  g.update({right:true});assert.equal(g.fourWay,true);
+  assert.ok(g.removedObjects().includes(star));
+  g.fire();assert.deepEqual(g.bullets.map(b=>[b.vx,b.vy]),[[8,0],[-8,0],[0,-8],[0,8]]);
+  g.fire();assert.equal(g.bullets.length,4,'cooldown applies to the whole volley');
+  g.enter(0,84,65);g.invulnerable=0;g.hurt();assert.equal(g.fourWay,true);
+  g.enter(16,28,56);assert.ok(g.removedObjects().some(o=>o.type==='fourWay'));
+  g.reset();assert.equal(g.fourWay,false);g.enter(16,28,56);
+  assert.equal(g.removedObjects().some(o=>o.type==='fourWay'),false);
+});
+
+test('chosen rooms start at a clear entrance and respawn there',()=>{
+  const g=fresh(), entries=new Map([[0,null]]), queue=[0];
+  for(const id of queue)for(const [direction,next] of data.rooms[id].links.entries()) {
+    if(next>=0 && next<data.rooms.length && !entries.has(next)) {
+      entries.set(next,direction^1);queue.push(next);
+    }
+  }
+  for(let room=1;room<data.rooms.length;room++) {
+    g.startRoom=room;g.reset();g.enemies=[];
+    assert.equal(g.room,room);
+    const {x,y}=g.player,edge=entries.get(room);
+    assert.ok([y<=40,y>=100,x<=41,x>=255][edge],`Room ${room+1} starts beside its entry edge`);
+    assert.equal(g.blocked(x,y),false,`Room ${room+1} entrance is clear`);
+    g.update();assert.equal(g.room,room,'idle ship stays in the chosen room');
+    const entrance={...g.spawn};g.player={x:84,y:65};g.invulnerable=0;g.hurt();
+    assert.deepEqual(g.player,entrance);
+    g.reset();assert.deepEqual(g.player,entrance,'restart uses the same entrance');
+  }
+  g.startRoom=0;g.reset();assert.deepEqual(g.player,{x:84,y:65});
+  g.startRoom=999;g.reset();assert.equal(g.room,0);assert.deepEqual(g.player,{x:84,y:65});
+});

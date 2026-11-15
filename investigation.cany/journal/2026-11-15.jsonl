@@ -114,3 +114,19 @@
 {"caller":"ui","duration_ms":0,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:01:06Z","tool":"project_pins_list","ts":1794769266}
 {"caller":"ui","duration_ms":1,"kind":"tool_call","ok":true,"params":{"project":"/Users/audax/Documents/Craft Anything/montrix-vice-snapshot-20261115103455"},"time":"2026-11-15T19:01:10Z","tool":"project_preview","ts":1794769270}
 {"caller":"ui","duration_ms":0,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:01:59Z","tool":"project_pins_list","ts":1794769319}
+{"caller":"ui","duration_ms":0,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:02:18Z","tool":"project_pins_list","ts":1794769338}
+{"caller":"ui","duration_ms":1,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:02:52Z","tool":"project_pins_list","ts":1794769372}
+{"caller":"mcp","duration_ms":7325,"kind":"tool_call","ok":true,"params":{"project":"/Users/audax/Documents/Craft Anything/montrix-vice-snapshot-20261115103455","wait_minutes":5},"time":"2026-11-15T19:04:53Z","tool":"rebuild_check","ts":1794769493}
+{"caller":"ui","duration_ms":1,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:04:59Z","tool":"project_pins_list","ts":1794769499}
+{"caller":"ui","duration_ms":1,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:07:27Z","tool":"project_pins_list","ts":1794769647}
+{"caller":"ui","duration_ms":14,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:17:58Z","tool":"project_pins_list","ts":1794770278}
+{"caller":"ui","duration_ms":3,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:20:44Z","tool":"project_pins_list","ts":1794770444}
+{"caller":"ui","duration_ms":3,"kind":"tool_call","ok":true,"params":{"project":"/Users/audax/Documents/Craft Anything/montrix-vice-snapshot-20261115103455"},"time":"2026-11-15T19:20:46Z","tool":"project_preview","ts":1794770446}
+{"caller":"ui","duration_ms":0,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:21:24Z","tool":"project_pins_list","ts":1794770484}
+{"caller":"ui","duration_ms":18,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:21:57Z","tool":"project_pins_list","ts":1794770517}
+{"caller":"ui","duration_ms":1,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:22:48Z","tool":"project_pins_list","ts":1794770568}
+{"caller":"mcp","duration_ms":8352,"kind":"tool_call","ok":true,"params":{"project":"/Users/audax/Documents/Craft Anything/montrix-vice-snapshot-20261115103455","wait_minutes":35},"time":"2026-11-15T19:23:40Z","tool":"rebuild_check","ts":1794770620}
+{"caller":"ui","duration_ms":0,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:23:59Z","tool":"project_pins_list","ts":1794770639}
+{"caller":"ui","duration_ms":1,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:23:59Z","tool":"project_pins_list","ts":1794770639}
+{"caller":"ui","duration_ms":1,"kind":"tool_call","ok":true,"params":{"project":"/Users/audax/Documents/Craft Anything/montrix-vice-snapshot-20261115103455"},"time":"2026-11-15T19:24:01Z","tool":"project_preview","ts":1794770641}
+{"caller":"ui","duration_ms":0,"kind":"tool_call","ok":true,"params":{},"time":"2026-11-15T19:24:56Z","tool":"project_pins_list","ts":1794770696}

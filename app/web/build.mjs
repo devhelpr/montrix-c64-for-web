@@ -7,6 +7,13 @@ const data=JSON.parse(await readFile(path.join(root,'web/assets/rooms.json'),'ut
 const referenceRam=await readFile(path.join(root,'evidence/ram.bin'));
 for(const [room,record] of data.rooms.entries()) {
   record.interactions=referenceInteractions(referenceRam,room);
+  // The star in displayed Room 17 is character artwork (tiles 129–132),
+  // not a sprite or a key in the drawing-command stream.
+  if(room===16) {
+    const tile=record.collision.findIndex((v,i)=>v===129 && record.collision[i+1]===130 && record.collision[i+40]===131 && record.collision[i+41]===132);
+    if(tile<0)throw Error('Room 17 weapon pickup is missing');
+    record.interactions.push({type:'fourWay',x:tile%40*8,y:Math.floor(tile/40)*8,w:16,h:16});
+  }
   const pointer=referenceRam.readUInt16LE(0x2800+room*4), high=referenceRam[pointer+4];
   for(const [slot,actor] of record.actors.entries())if(actor.kind===172) {
     actor.launchX=referenceRam[pointer+6+(slot-1)*3]+((high&(1<<slot))?256:0)-24;

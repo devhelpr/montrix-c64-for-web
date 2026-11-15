@@ -20,7 +20,7 @@ export function actorPose(actor, age) {
 }
 export class Game {
   constructor(data, sound = () => {}) { this.data = data; this.sound = sound; this.mode = 'title'; this.tick = 0; this.best = 0; this.startRoom = 0; this.infiniteLives = false; this.infiniteShield = false; this.reset(); this.mode = 'title'; }
-  reset() { this.tick = 0; this.turnFrame = 0; this.drift = 0; this.coast = 0; this.score = 0; this.lives = 4; this.cooldown = 0; this.invulnerable = 64; this.direction = 0; this.shotsFired = 0; this.kills = 0; this.keys = new Set(); this.collected = new Set(); this.visited = new Set(); this.cleared = new Set(); this.particles = []; this.mode = 'playing'; const room = Number.isInteger(this.startRoom) && this.startRoom >= 0 && this.startRoom < this.data.rooms.length ? this.startRoom : 0; const pose = this.data.rooms[room].actors[0]?.poses?.[0]?.[0]; this.enter(room, room === 0 ? 84 : (pose?.[0] ?? 84), room === 0 ? 65 : (pose?.[1] ?? 65)); }
+  reset() { this.tick = 0; this.turnFrame = 0; this.drift = 0; this.coast = 0; this.score = 0; this.lives = 4; this.cooldown = 0; this.invulnerable = 64; this.direction = 0; this.fourWay = false; this.shotsFired = 0; this.kills = 0; this.keys = new Set(); this.collected = new Set(); this.visited = new Set(); this.cleared = new Set(); this.particles = []; this.mode = 'playing'; const room = Number.isInteger(this.startRoom) && this.startRoom >= 0 && this.startRoom < this.data.rooms.length ? this.startRoom : 0; this.enter(room, 84, 65); if(room !== 0) this.startAtEntrance(); }
   enter(id, x, y) {
     this.room = id; this.visited.add(id); this.player = {x, y}; this.spawn = {x, y}; this.bullets = []; this.enemyShots = [];
     this.roomTick = 0; this.particles = [];
@@ -31,6 +31,42 @@ export class Game {
     })).filter(a => a.poses?.some(([p]) => p[3] && p[1] > -21 && p[1] < 160) && !this.cleared.has(a.id));
     for (const e of this.enemies) { this.placeActor(e); if(e.kind===172) {e.rocket=true;e.launched=false;e.x=e.launchX??e.x;e.y=e.launchY??e.y;e.launchX=e.x;e.launchY=e.y;e.sprite=23;e.hp=8;e.visible=true;} }
     this.invulnerable = Math.max(this.invulnerable, 35);
+  }
+  startAtEntrance() {
+    // Follow the room graph from the normal start to identify the entry edge.
+    // Actor captures record idle positions, not room entrances.
+    const entries = new Map([[0, null]]), queue = [0];
+    for(const id of queue) for(const [direction, next] of this.data.rooms[id].links.entries()) {
+      if(next >= 0 && next < this.data.rooms.length && !entries.has(next)) {
+        entries.set(next, direction ^ 1); queue.push(next);
+      }
+    }
+    const edge = entries.get(this.room);
+    if(edge === undefined) return;
+    const vertical = edge < 2;
+    const offsets = Array.from({length: vertical ? 295 : 140}, (_, i) => i + 1)
+      .sort((a,b) => Math.abs(a-(vertical?148:70))-Math.abs(b-(vertical?148:70)));
+    const position = (offset, depth) => vertical
+      ? {x:offset, y:edge===0?depth:140-depth}
+      : {x:edge===2?depth+1:295-depth, y:offset};
+    const wall = p => [[4,4],[18,4],[4,10],[18,10]].some(([dx,dy]) => {
+      const x=p.x+dx, y=p.y+dy;
+      if(this.interactions.some(o => o.type==='door' && x>=o.x && x<o.x+o.w && y>=o.y && y<o.y+o.h)) return false;
+      return x>=0 && x<320 && y>=0 && y<160 &&
+        this.data.rooms[this.room].collision[Math.floor(y/8)*40+Math.floor(x/8)]===128;
+    });
+    // Stay in the doorway's opening; step inward past a locked door if needed.
+    let openings = offsets.filter(offset => !wall(position(offset,0)));
+    for(let depth=1; depth<=40 && openings.length; depth++) {
+      openings = openings.filter(offset => !wall(position(offset,depth)));
+      const offset = openings.find(offset => {
+        const p=position(offset,depth); return !this.blocked(p.x,p.y);
+      });
+      if(offset === undefined) continue;
+      this.player=position(offset,depth); this.spawn={...this.player};
+      this.direction=edge===3?1:0; this.turnFrame=this.direction===1?6:0;
+      return;
+    }
   }
   placeActor(e) {
     if(e.rocket) return;
@@ -58,7 +94,7 @@ export class Game {
       }
     }
   }
-  removedObjects() { return this.interactions.filter(o => o.type==='key' ? this.collected.has(`${this.room}:${o.key}`) : this.keys.has(o.key)); }
+  removedObjects() { return this.interactions.filter(o => o.type==='door' ? this.keys.has(o.key) : this.collected.has(`${this.room}:${o.type==='key'?o.key:o.type}`)); }
   solid(x, y) { if (x < 0 || x >= 320 || y < 0 || y >= 160) return false; if(this.removedObjects().some(o=>x>=o.x&&x<o.x+o.w&&y>=o.y&&y<o.y+o.h))return false; return this.data.rooms[this.room].collision[Math.floor(y / 8) * 40 + Math.floor(x / 8)] === 128 || this.interactions.some(o=>o.type==='door'&&!this.keys.has(o.key)&&x>=o.x&&x<o.x+o.w&&y>=o.y&&y<o.y+o.h); }
   blocked(x, y) { return [[4,4],[18,4],[4,10],[18,10]].some(([dx,dy]) => this.solid(x+dx, y+dy)); }
   transition(index, x, y) {
@@ -68,9 +104,11 @@ export class Game {
     this.enter(next, x, y); this.sound('room'); return true;
   }
   fire() {
-    if (this.cooldown || this.bullets.length >= 8) return;
-    const dirs = [[8,0],[-8,0],[0,-8],[0,8]], [vx,vy] = dirs[this.direction];
-    this.bullets.push({x:this.player.x+12, y:this.player.y+10, vx,vy,life:45}); this.cooldown = 10; this.shotsFired++; this.sound('fire');
+    const dirs = [[8,0],[-8,0],[0,-8],[0,8]];
+    const volley = this.fourWay ? dirs : [dirs[this.direction]];
+    if (this.cooldown || this.bullets.length + volley.length > 8) return;
+    for(const [vx,vy] of volley) this.bullets.push({x:this.player.x+12, y:this.player.y+10, vx,vy,life:45});
+    this.cooldown = 10; this.shotsFired++; this.sound('fire');
   }
   burst(x,y) { for(let i=0;i<12;i++) this.particles.push({x:x+12,y:y+10,vx:Math.cos(i*2.4)*(1+i%3),vy:Math.sin(i*2.4)*(1+i%3),life:18}); }
   hurt() {
@@ -102,6 +140,9 @@ export class Game {
     if(p.x>295) {if(this.transition(3,2,p.y)) return; p.x=295;}
     for(const o of this.interactions) if(o.type==='key' && !this.collected.has(`${this.room}:${o.key}`) && p.x+18>o.x && p.x+4<o.x+o.w && p.y+14>o.y && p.y+3<o.y+o.h) {
       this.keys.add(o.key); this.collected.add(`${this.room}:${o.key}`); this.score=Math.min(999999,this.score+100); this.sound('key');
+    }
+    for(const o of this.interactions) if(o.type==='fourWay' && !this.collected.has(`${this.room}:${o.type}`) && p.x+18>o.x && p.x+4<o.x+o.w && p.y+14>o.y && p.y+3<o.y+o.h) {
+      this.fourWay=true; this.collected.add(`${this.room}:${o.type}`); this.sound('key');
     }
     if(input.fire) this.fire();
     this.roomTick++;
